@@ -23,11 +23,11 @@ function App() {
 
     return (
         <>
-            <section class="hero is-primary is-bold">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 class="title">HW7 Project</h1>
-                        <h2 class="subtitle">A Hackwestern Project</h2>
+            <section className="hero is-primary is-bold">
+                <div className="hero-body">
+                    <div className="container">
+                        <h1 className="title">HW7 Project</h1>
+                        <h2 className="subtitle">A Hackwestern Project</h2>
                     </div>
                 </div>
             </section>
