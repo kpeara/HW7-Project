@@ -6,6 +6,9 @@ function Form() {
 
     const handleForm = async (e) => {
         e.preventDefault();
+        let regex = /^\s*$/;
+        if (username.match(regex) || password.match(regex)) return;
+
         try {
             const response = await fetch("http://localhost:8080/login", {
                 method: "POST",
