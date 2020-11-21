@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function App() {
     const [username, setUsername] = useState("");
@@ -22,27 +22,43 @@ function App() {
     };
 
     return (
-        <form onSubmit={handleForm}>
-            <label>
-                username:
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </label>
+        <>
+            <section class="hero is-primary is-bold">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">HW7 Project</h1>
+                        <h2 class="subtitle">A Hackwestern Project</h2>
+                    </div>
+                </div>
+            </section>
+            <div className="container mt-4">
+                <form onSubmit={handleForm}>
+                    <label className="label">
+                        Username:
+                        <div>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </div>
+                    </label>
 
-            <label>
-                password:
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </label>
+                    <label className="label">
+                        Password:
+                        <div>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                    </label>
 
-            <input type="submit" value="Submit" />
-        </form>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </>
     );
 }
 
