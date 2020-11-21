@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form() {
+function Form(setAuthenticated, authenticated) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -9,19 +9,21 @@ function Form() {
         let regex = /^\s*$/;
         if (username.match(regex) || password.match(regex)) return;
 
-        try {
+        // try {
+        /*
             const response = await fetch("http://localhost:8080/login", {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
+            */
 
-            if (response.ok) {
-                console.log("success");
-            }
-        } catch (err) {
-            console.log(err);
-        }
+        // if (response.ok) {
+        setAuthenticated(true);
+        // }
+        // } catch (err) {
+        //     console.log(err);
+        // }
     };
 
     return (
