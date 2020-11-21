@@ -27,33 +27,33 @@ function Form() {
     return (
         <div className="container mt-4">
             <form onSubmit={handleForm}>
-                <label className="label">
-                    Username:
-                    <div>
+                <div className="column is-one-quarter">
+                    <label className="label">
+                        Username:
                         <input
+                            className="input"
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
-                    </div>
-                </label>
+                    </label>
 
-                <label className="label">
-                    Password:
-                    <div>
+                    <label className="label mt-4">
+                        Password:
                         <input
+                            className="input"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                    </div>
-                </label>
+                    </label>
 
-                <input
-                    className="button is-info"
-                    type="submit"
-                    value="Submit"
-                />
+                    <input
+                        className="button is-info mt-4"
+                        type="submit"
+                        value="Login"
+                    />
+                </div>
             </form>
         </div>
     );
