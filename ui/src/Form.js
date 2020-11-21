@@ -46,7 +46,11 @@ function Form() {
                     </div>
                 </label>
 
-                <input type="submit" value="Submit" />
+                <input
+                    className="button is-info"
+                    type="submit"
+                    value="Submit"
+                />
             </form>
         </div>
     );
