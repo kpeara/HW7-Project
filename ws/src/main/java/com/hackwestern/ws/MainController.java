@@ -1,6 +1,8 @@
 package com.hackwestern.ws;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +14,18 @@ public class MainController {
     private UserRepository userRepository;
 
     @PostMapping(path="/login")
-    public @ResponseBody String addNewUser (@RequestBody User user) {
-        userRepository.save(user);
-        return "Saved";
+    public ResponseEntity<String> addNewUser (@RequestBody User user) {
+
+        User loggedIn = userRepository.findUserByUsername(user.getUsername());
+
+        if (loggedIn == null) {
+            userRepository.save(user);
+            return ResponseEntity.ok("New User Created");
+        }
+        else if (loggedIn.equals(user)) {
+            return ResponseEntity.ok("Logged In");
+        }
+
+        return ResponseEntity.badRequest().build();
     }
 }
