@@ -1,38 +1,36 @@
 import React, { Component } from "react";
 
 class Vent extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state = {
-            ventInput: null
-        }
+        this.state = { value: '' };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
+    handleChange(event) {
+        this.setState({ value: event.target.value });
     }
 
-    handleInputChange(event) {
-        event.preventDefault()
-        console.log(event)
-        this.setState({
-          [event.target.name]: event.target.value
-        });
-      }
-     
-    render () {
-        const {ventInput} = this.state
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    render() {
+        const { ventInput } = this.state
         return (
             <div>
                 <h1>Feel free to vent, type about what has been concerning you lately, and then throw it away!</h1>
-                <p>Your worries: {ventInput}</p>
+                <p>Your worries: {this.state.value}</p>
                 <form onSubmit={this.handleSubmit}>
-                    <p><input type='text' placeholder='Type your worries here' name='ventInput'/></p>
-                    <p><button>Burn it!</button></p>
+                    <p><input type='text' placeholder='Type your worries here' value={this.state.value} onChange={this.handleChange} /></p>
+                    <p><input type='submit' value='Burn it!' /></p>
                 </form>
             </div>
         )
-    
+
     }
 
 }
