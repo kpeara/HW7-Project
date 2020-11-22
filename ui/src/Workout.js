@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 function Workout() {
     const [equipment, setEquipment] = useState([]);
     const [dropdown, setDropdown] = useState(false);
+    const [workout, setWorkout] = useState([]);
 
     useEffect(() => {
         const getEquipment = async () => {
@@ -16,6 +17,20 @@ function Workout() {
         };
         getEquipment();
     }, []);
+
+    const getWorkout = async (equipment) => {
+        console.log(equipment);
+        try {
+            const response = await fetch(
+                `http://localhost:8080/workout/${equipment}`
+            );
+            const data = await response.json();
+            console.log(JSON.stringify(data));
+            setWorkout(data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <>
@@ -45,7 +60,12 @@ function Workout() {
                         >
                             <div className="dropdown-content">
                                 {equipment.map((e) => (
-                                    <a className="dropdown-item">
+                                    <a
+                                        className="dropdown-item"
+                                        onClick={() =>
+                                            getWorkout(e.equipmentName)
+                                        }
+                                    >
                                         {e.equipmentName}
                                     </a>
                                 ))}
@@ -55,6 +75,14 @@ function Workout() {
                         <></>
                     )}
                 </div>
+
+                {workout.map((w) => (
+                    <>
+                        <div>{w.workoutName}</div>
+                        <div>Description {w.workoutDescription}</div>
+                        <div>Body Part:{w.bodyPart}</div>
+                    </>
+                ))}
             </div>
         </>
     );
