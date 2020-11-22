@@ -1,21 +1,22 @@
 DROP DATABASE hackwesternwebsite;
-CREATE DATABASE hackwesternwebsite;
+CREATE DATABASE IF NOT EXISTS hackwesternwebsite;
 USE hackwesternwebsite;
 
 SHOW TABLES;
-CREATE TABLE  equipment(
+CREATE TABLE equipment(
   equipmentname VARCHAR(30),
-  PRIMARY KEY(equipmentname)
+  PRIMARY KEY (equipmentname)
   );
-CREATE TABLE  workout(
+
+CREATE TABLE workout(
   workoutname VARCHAR(50),
   workoutdescription VARCHAR(300),
-  equipmentname VARCHAR(30)
+  equipmentname VARCHAR(30),
   bodypart VARCHAR(30),
-  PRIMARY KEY(workoutname),
-  FOREIGN KEY(equipmentname) REFERENCES equipment(equipmentname),
+  PRIMARY KEY (workoutname),
+  FOREIGN KEY (equipmentname) REFERENCES equipment(equipmentname)
   );
-  
+
 INSERT INTO equipment VALUES('No Equipment (Bodyweight)');
 INSERT INTO equipment VALUES('Dumbbell');
 INSERT INTO equipment VALUES('Kettlebell');
