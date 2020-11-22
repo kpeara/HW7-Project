@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Workout() {
+    const [equipment, setEquipment] = useState([]);
+
+    useEffect(() => {
+        const getEquipment = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/equipment");
+                const data = await response.json();
+                setEquipment(data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getEquipment();
+    }, []);
+
     return (
         <>
             <div className="container mt-4">
@@ -26,14 +41,11 @@ function Workout() {
                         role="menu"
                     >
                         <div className="dropdown-content">
-                            <a className="dropdown-item">Dropdown item</a>
-                            <a className="dropdown-item">Other dropdown item</a>
-                            <a href="#" className="dropdown-item">
-                                Active dropdown item
-                            </a>
-                            <a href="#" className="dropdown-item">
-                                Other dropdown item
-                            </a>
+                            {equipment.map((e) => (
+                                <a className="dropdown-item">
+                                    {e.equipmentName}
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>
