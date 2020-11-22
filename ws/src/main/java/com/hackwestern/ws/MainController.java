@@ -13,6 +13,9 @@ public class MainController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EquipmentRepository equipmentRepository;
+
     @PostMapping(path="/login")
     public ResponseEntity<String> addNewUser (@RequestBody User user) {
 
@@ -27,5 +30,10 @@ public class MainController {
         }
 
         return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping(path="/equipment")
+    public Iterable<Equipment> getEquipment () {
+        return equipmentRepository.findAll();
     }
 }
