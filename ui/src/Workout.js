@@ -81,9 +81,11 @@ function Workout() {
                 {workout.map((w) => (
                     <>
                         <div className="box">
-                            <div>{w.workoutName}</div>
-                            <div>Description {w.workoutDescription}</div>
-                            <div>Body Part:{w.bodyPart}</div>
+                            <div>
+                                <strong>{w.workoutName}</strong>
+                            </div>
+                            <div>Description: {w.workoutDescription}</div>
+                            <div>Body Part: {w.bodyPart}</div>
                         </div>
                     </>
                 ))}
