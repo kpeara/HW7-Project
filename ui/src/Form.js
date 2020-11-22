@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-function Form() {
+Form.propTypes = {
+    setAuthenticated: PropTypes.func,
+};
+
+function Form({ setAuthenticated }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -10,15 +15,17 @@ function Form() {
         if (username.match(regex) || password.match(regex)) return;
 
         try {
+            /*
             const response = await fetch("http://localhost:8080/login", {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
+            */
 
-            if (response.ok) {
-                console.log("success");
-            }
+            // if (response.ok) {
+            setAuthenticated(true);
+            // }
         } catch (err) {
             console.log(err);
         }
