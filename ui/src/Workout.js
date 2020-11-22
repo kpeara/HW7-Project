@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function Workout() {
     const [equipment, setEquipment] = useState([]);
+    const [dropdown, setDropdown] = useState(false);
 
     useEffect(() => {
         const getEquipment = async () => {
@@ -25,6 +26,7 @@ function Workout() {
                             className="button"
                             aria-haspopup="true"
                             aria-controls="dropdown-menu"
+                            onClick={() => setDropdown(!dropdown)}
                         >
                             <span>Select Workout</span>
                             <span className="icon is-small">
@@ -35,19 +37,23 @@ function Workout() {
                             </span>
                         </button>
                     </div>
-                    <div
-                        className="dropdown-menu"
-                        id="dropdown-menu"
-                        role="menu"
-                    >
-                        <div className="dropdown-content">
-                            {equipment.map((e) => (
-                                <a className="dropdown-item">
-                                    {e.equipmentName}
-                                </a>
-                            ))}
+                    {dropdown ? (
+                        <div
+                            className="dropdown-menu"
+                            id="dropdown-menu"
+                            role="menu"
+                        >
+                            <div className="dropdown-content">
+                                {equipment.map((e) => (
+                                    <a className="dropdown-item">
+                                        {e.equipmentName}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </>
