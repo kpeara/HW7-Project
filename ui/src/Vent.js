@@ -6,12 +6,12 @@ const FADE_DURATION = 1000;
 
 class Vent extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            value: '',
+            value: "",
 
             fadeTransition: null,
-            fadeState: "fade-in"
+            fadeState: "fade-in",
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,47 +22,60 @@ class Vent extends Component {
         event.preventDefault();
         this.setState({
             fadeState: "fade-in",
-            value: event.target.value
+            value: event.target.value,
         });
     }
 
     handleBurnSubmit(event) {
-        alert('the burn it button was pressed with text: ' + this.state.value);
+        alert("the burn it button was pressed with text: " + this.state.value);
         // Create a timer that runs after quote
         // fades out
         this.setState({
             fadeState: "fade-out",
-            value: ''
-        })
+            value: "",
+        });
         event.preventDefault();
     }
 
     render() {
-        const { ventInput } = this.state
+        const { ventInput } = this.state;
         return (
-            <div>
-                <h1>Feel free to vent, type about what has been concerning you lately, and then throw it away!</h1>
-                <div
-                    className={`fade-wrapper ${this.state.fadeState}`}
-                    style={{ transitionDuration: `${FADE_DURATION}ms` }}
-                >
-                    <p>Your note: </p>
-                    <div class="note">
-                        {this.state.value}
+            <div className="container mt-4">
+                <h1>
+                    Feel free to vent, type about what has been concerning you
+                    lately, and then throw it away!
+                </h1>
+                <div className="box">
+                    <div
+                        className={`fade-wrapper ${this.state.fadeState}`}
+                        style={{ transitionDuration: `${FADE_DURATION}ms` }}
+                    >
+                        <p>Your note: </p>
+                        <div className="note">{this.state.value}</div>
                     </div>
-
                 </div>
-                <form onSubmit={this.handleBurnSubmit}>
-                    <p><input type='text' placeholder='Type your worries here' value={this.state.value} onChange={this.handleChange} /></p>
-                    <p><input type='submit' value='Burn it!' /></p>
+                <form className="mt-4" onSubmit={this.handleBurnSubmit}>
+                    <p>
+                        <input
+                            className="input"
+                            type="text"
+                            placeholder="Type your worries here"
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                        />
+                    </p>
+                    <p>
+                        <input
+                            className="button mt-4 is-danger"
+                            type="submit"
+                            value="Burn it!"
+                        />
+                    </p>
                 </form>
-            </div >
-        )
-
+            </div>
+        );
     }
-
 }
-
 
 /*function Vent() {
     return <h1>Vent</h1>;
