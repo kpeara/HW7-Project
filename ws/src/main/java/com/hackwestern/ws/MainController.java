@@ -16,6 +16,9 @@ public class MainController {
     @Autowired
     private EquipmentRepository equipmentRepository;
 
+    @Autowired
+    private WorkoutRepository workoutRepository;
+
     @PostMapping(path="/login")
     public ResponseEntity<String> addNewUser (@RequestBody User user) {
 
@@ -35,5 +38,10 @@ public class MainController {
     @GetMapping(path="/equipment")
     public Iterable<Equipment> getEquipment () {
         return equipmentRepository.findAll();
+    }
+
+    @GetMapping(path="/workout/{equipment}")
+    public Iterable<Workout> getWorkout(@PathVariable String equipment) {
+        return workoutRepository.findAllByEquipmentName(equipment);
     }
 }
