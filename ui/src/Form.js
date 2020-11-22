@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 
 Form.propTypes = {
     setAuthenticated: PropTypes.func,
@@ -15,18 +16,16 @@ function Form({ setAuthenticated }) {
         if (username.match(regex) || password.match(regex)) return;
 
         try {
-            /*
             const response = await fetch("http://localhost:8080/login", {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
-            */
 
-            // if (response.ok) {
-            setAuthenticated(true);
-            // }
+            if (response.ok) setAuthenticated(true);
+            else toast.error("Invalid Login.");
         } catch (err) {
+            console.log("errr");
             console.log(err);
         }
     };
