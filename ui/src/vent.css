@@ -1,0 +1,10 @@
+.fade-wrapper {
+    transition: opacity ease-in-out;
+  }
+  .fade-out {
+    opacity: 0;
+    color: red
+  }
+  .fade-in {
+    opacity: 1;
+  }
