@@ -1,4 +1,4 @@
-<img src="selfgenic.png">
+<img src="selfgenic_logo.png">
 
 During a time when people are being effected mentally and physically, Self Genic exists to remind you to stay in shape, pay attention to your thoughts and to remind yourself to just breath.
 
