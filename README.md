@@ -1,6 +1,6 @@
-# Health++
+<img src="selfgenic.png">
 
-During a time when people are being effected mentally and physically, Health++ exists to remind you to stay in shape, pay attention to your thoughts and to remind yourself to just breath.
+During a time when people are being effected mentally and physically, Self Genic exists to remind you to stay in shape, pay attention to your thoughts and to remind yourself to just breath.
 
 #### Technologies Used:
 
@@ -27,4 +27,4 @@ Requires yarn (npm), Java 11, and MySql to be on your system.
     -   go to project root
     -   run `mysql -uroot < ./dbsetup.sql`
 
-### Thank you for checking out Health++!
+### Thank you for checking out Self Genic!
